@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/asliddin/CLionProjects/interpreter/includes/Interpreter.cpp
+Interpreter.h
+C:/Users/asliddin/CLionProjects/interpreter/includes/Interpreter.h
+InvalidSyntaxException.h
+C:/Users/asliddin/CLionProjects/interpreter/includes/InvalidSyntaxException.h
+
+C:/Users/asliddin/CLionProjects/interpreter/includes/Interpreter.h
+iostream
+-
+Token.h
+C:/Users/asliddin/CLionProjects/interpreter/includes/Token.h
+Lexer.h
+C:/Users/asliddin/CLionProjects/interpreter/includes/Lexer.h
+
+C:/Users/asliddin/CLionProjects/interpreter/includes/InvalidSyntaxException.h
+exception
+-
+
+C:/Users/asliddin/CLionProjects/interpreter/includes/Lexer.h
+string
+-
+Token.h
+C:/Users/asliddin/CLionProjects/interpreter/includes/Token.h
+
+C:/Users/asliddin/CLionProjects/interpreter/includes/Token.h
+string
+-
+TokenType.h
+C:/Users/asliddin/CLionProjects/interpreter/includes/TokenType.h
+
+C:/Users/asliddin/CLionProjects/interpreter/includes/TokenType.h
+

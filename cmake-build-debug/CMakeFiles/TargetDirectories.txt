@@ -1,0 +1,3 @@
+C:/Users/asliddin/CLionProjects/interpreter/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/asliddin/CLionProjects/interpreter/cmake-build-debug/CMakeFiles/interpreter.dir
+C:/Users/asliddin/CLionProjects/interpreter/cmake-build-debug/CMakeFiles/edit_cache.dir
