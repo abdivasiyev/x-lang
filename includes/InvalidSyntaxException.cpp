@@ -4,6 +4,6 @@
 
 #include "InvalidSyntaxException.h"
 
-const char *InvalidSyntaxException::what() const throw() {
+const char *InvalidSyntaxException::what() const noexcept {
     return "Invalid Syntax.";
 }

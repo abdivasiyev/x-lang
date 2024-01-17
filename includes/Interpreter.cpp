@@ -5,13 +5,12 @@
 #include "Interpreter.h"
 #include "InvalidSyntaxException.h"
 
-Interpreter::Interpreter(Lexer lexer) {
+Interpreter::Interpreter(const Lexer &lexer) {
     this->lexer = lexer;
     this->currentToken = this->lexer.getNextToken();
 }
 
-void Interpreter::goNext(TokenType tokenType) {
-
+void Interpreter::goNext(const TokenType tokenType) {
     if (this->currentToken.getType() == tokenType) {
         this->currentToken = this->lexer.getNextToken();
     }
@@ -24,7 +23,7 @@ int Interpreter::factor() {
         this->goNext(TokenType::LPARENTHESES);
         result = this->expr();
         this->goNext(TokenType::RPARENTHESES);
-    }else {
+    } else {
         this->goNext(TokenType::INTEGER);
         result = token.getIntegerValue();
     }
@@ -34,7 +33,8 @@ int Interpreter::factor() {
 
 int Interpreter::term() {
     int result = this->factor();
-    while (this->currentToken.getType() == TokenType::MULTIPLY || this->currentToken.getType() == TokenType::DIVISION) {
+    while (this->currentToken.getType() == TokenType::MULTIPLY ||
+           this->currentToken.getType() == TokenType::DIVISION) {
         // get operator
         Token op = this->currentToken;
         switch (op.getType()) {
@@ -45,6 +45,20 @@ int Interpreter::term() {
             case TokenType::DIVISION:
                 this->goNext(TokenType::DIVISION);
                 result /= this->term();
+                break;
+            case TokenType::NONE:
+                break;
+            case TokenType::PLUS:
+                break;
+            case TokenType::MINUS:
+                break;
+            case TokenType::INTEGER:
+                break;
+            case TokenType::LPARENTHESES:
+                break;
+            case TokenType::RPARENTHESES:
+                break;
+            case TokenType::END_OF_FILE:
                 break;
         }
     }
@@ -67,6 +81,7 @@ int Interpreter::expr() {
                 this->goNext(TokenType::MINUS);
                 result -= this->term();
                 break;
+            default: break;
         }
     }
 

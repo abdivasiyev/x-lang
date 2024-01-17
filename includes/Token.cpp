@@ -4,11 +4,12 @@
 
 #include "Token.h"
 
-Token::Token() {}
+Token::Token(): type() {
+}
 
-Token::Token(TokenType type, char charValue) {
+Token::Token(const TokenType type, const char value): integerValue(0) {
     this->type = type;
-    this->charValue = charValue;
+    this->charValue = value;
 }
 
 Token::Token(TokenType type, int integerValue) {
@@ -16,25 +17,25 @@ Token::Token(TokenType type, int integerValue) {
     this->integerValue = integerValue;
 }
 
-TokenType Token::getType() {
+TokenType Token::getType() const {
     return this->type;
 }
 
-char Token::getCharValue() {
+char Token::getCharValue() const {
     return this->charValue;
 }
 
-int Token::getIntegerValue() {
+int Token::getIntegerValue() const {
     return this->integerValue;
 }
 
-std::string Token::asString() {
-    std::string typeAsString = getTypeName(this->type);
+std::string Token::asString() const {
+    const std::string typeAsString = getTypeName(this->type);
     std::string result = "Token(" + typeAsString + ", " + this->getCharValue() + ")";
 
     return result;
 }
 
-void Token::setType(TokenType tokenType) {
+void Token::setType(const TokenType tokenType) {
     this->type = tokenType;
 }

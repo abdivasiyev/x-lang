@@ -7,9 +7,9 @@
 
 #include <exception>
 
-class InvalidSyntaxException : public std::exception {
+class InvalidSyntaxException final : public std::exception {
 public:
-    virtual const char* what() const throw();
+    const char* what() const noexcept override;
 };
 
 

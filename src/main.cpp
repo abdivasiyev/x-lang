@@ -1,4 +1,3 @@
-#include <bits/stdc++.h>
 #include "../includes/Interpreter.h"
 #include "../includes/InvalidSyntaxException.h"
 
@@ -11,15 +10,14 @@ int main() {
         try {
             cout << "calc>";
             getline(cin, user_input);
-            Lexer *lexer = new Lexer(user_input);
-            Interpreter *interpreter = new Interpreter(*lexer);
-            int result = interpreter->expr();
+            const auto *lexer = new Lexer(user_input);
+            auto *interpreter = new Interpreter(*lexer);
+            const int result = interpreter->expr();
             cout << "calc>" << result << "\n";
-        } catch (InvalidSyntaxException& e) {
+        } catch (InvalidSyntaxException &e) {
             cout << "Error: " << e.what();
             break;
         }
-
     }
 
     return 0;

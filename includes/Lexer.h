@@ -10,16 +10,15 @@
 #include "Token.h"
 
 class Lexer {
-private:
-    int currentPosition;
+    int currentPosition{};
     std::string text;
-    char currentChar;
+    char currentChar{};
 public:
-    Lexer(std::string text);
+    explicit Lexer(std::string text);
 
     Lexer();
 
-    void error();
+    static void error();
 
     Token getNextToken();
 

@@ -12,19 +12,18 @@
 #include "TokenType.h"
 
 class Token {
-private:
     TokenType type;
-    char charValue;
-    int integerValue;
+    char charValue{};
+    int integerValue{};
 public:
     Token();
     Token(TokenType type, char value);
     Token(TokenType type, int integerValue);
-    TokenType getType();
+    TokenType getType() const;
     void setType(TokenType tokenType);
-    char getCharValue();
-    int getIntegerValue();
-    std::string asString();
+    char getCharValue() const;
+    int getIntegerValue() const;
+    std::string asString() const;
 };
 
 #endif //INTERPRETER_TOKEN_H

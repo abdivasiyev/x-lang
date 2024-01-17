@@ -8,20 +8,19 @@
 #include "Token.h"
 #include <string>
 
-Lexer::Lexer() {}
+Lexer::Lexer() = default;
 
 Lexer::Lexer(std::string text) {
-    this->text = text;
+    this->text = std::move(text);
     this->currentPosition = 0;
     this->currentChar = this->text[this->currentPosition];
 }
 
 void Lexer::error() {
-    throw new InvalidSyntaxException;
+    throw InvalidSyntaxException();
 }
 
 Token Lexer::getNextToken() {
-
     while (this->currentChar) {
         if (this->currentChar == ' ') {
             this->skipWhitespace();
@@ -32,33 +31,33 @@ Token Lexer::getNextToken() {
         }
         if (this->currentChar == '+') {
             this->increaseProgress();
-            return Token(TokenType::PLUS, '+');
+            return {TokenType::PLUS, '+'};
         }
         if (this->currentChar == '-') {
             this->increaseProgress();
-            return Token(TokenType::MINUS, '-');
+            return {TokenType::MINUS, '-'};
         }
         if (this->currentChar == '*') {
             this->increaseProgress();
-            return Token(TokenType::MULTIPLY, '*');
+            return {TokenType::MULTIPLY, '*'};
         }
         if (this->currentChar == '/') {
             this->increaseProgress();
-            return Token(TokenType::DIVISION, '/');
+            return {TokenType::DIVISION, '/'};
         }
         if (this->currentChar == '(') {
             this->increaseProgress();
-            return Token(TokenType::LPARENTHESES, '(');
+            return {TokenType::LPARENTHESES, '('};
         }
         if (this->currentChar == ')') {
             this->increaseProgress();
-            return Token(TokenType::RPARENTHESES, ')');
+            return {TokenType::RPARENTHESES, ')'};
         }
 
-        this->error();
+        error();
     }
 
-    return Token(TokenType::END_OF_FILE, ' ');
+    return {TokenType::END_OF_FILE, ' '};
 }
 
 void Lexer::increaseProgress() {
@@ -78,12 +77,11 @@ void Lexer::skipWhitespace() {
 
 
 int Lexer::getInteger() {
-    std::string num = "";
+    std::string num;
 
     while (isdigit(this->currentChar)) {
         num += this->currentChar;
         this->increaseProgress();
     }
-    int result = std::stoi(num);
-    return result;
+    return  std::stoi(num);
 }

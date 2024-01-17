@@ -10,16 +10,19 @@
 #include "Lexer.h"
 
 class Interpreter {
-
-private:
     // current token
     Token currentToken;
     Lexer lexer;
+
 public:
-    Interpreter(Lexer lexer);
+    explicit Interpreter(const Lexer &lexer);
+
     int expr();
+
     int term();
+
     int factor();
+
     void goNext(TokenType tokenType);
 };
 
